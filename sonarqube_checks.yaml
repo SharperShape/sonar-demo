@@ -1,0 +1,28 @@
+name: Run SonarQube analysis
+on:
+  workflow_call:
+    secrets: 
+      token:
+        required: true
+      host:
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Run checks
+        uses: docker://sonarsource/sonar-scanner-cli:latest
+        env:
+          SONAR_TOKEN: ${{ secrets.token }}
+          SONAR_HOST_URL: ${{ secrets.host }}
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.token }}
+          SONAR_HOST_URL: ${{ secrets.host }}
