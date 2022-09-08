@@ -1,0 +1,14 @@
+name: Run Sonar
+
+on:
+  push:
+    branches: "*"
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonar-analysis:
+    uses: SharperShape/sonar-demo/.github/workflows/sonarqube_checks.yaml@master
+    secrets:
+      token: ${{ secrets.SONAR_TOKEN }}
+      host: ${{ secrets.SONAR_HOST_URL }}
+
