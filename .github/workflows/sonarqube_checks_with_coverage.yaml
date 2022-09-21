@@ -14,7 +14,8 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/download-artifact@v2
+      - name: Get test coverage results from actifacts
+        uses: actions/download-artifact@v2
         with:
           name: test-coverage-data
       - name: Run checks
