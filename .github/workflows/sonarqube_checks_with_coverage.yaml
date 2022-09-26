@@ -19,7 +19,7 @@ jobs:
       #  with:
       #    name: test-coverage-data
       - name: Run checks
-        - run: echo "Sonar trial expired"
+        run: echo "Sonar trial expired"
       #  uses: docker://sonarsource/sonar-scanner-cli:latest
       #  env:
       #    SONAR_TOKEN: ${{ secrets.token }}

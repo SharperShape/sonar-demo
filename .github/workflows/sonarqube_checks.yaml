@@ -15,7 +15,7 @@ jobs:
       #    persist-credentials: false
       #    fetch-depth: 0
       - name: Run checks
-        - run: echo "Sonar trial expired"
+        run: echo "Sonar trial expired"
       #- name: Run checks
       #  uses: docker://sonarsource/sonar-scanner-cli:latest
       #  env:
